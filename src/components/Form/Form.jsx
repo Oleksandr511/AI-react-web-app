@@ -11,7 +11,7 @@ const Form = () => {
             text
         }
         tg.sendData(JSON.stringify(data))
-    }, [])
+    }, [text])
 
     useEffect(()=> {
         tg.onEvent('mainButtonClicked', onSendData)
