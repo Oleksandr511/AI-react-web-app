@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import useTelegram from './hooks/useTelegram';
+import useTelegram from '../../hooks/useTelegram';
 
 const Form = () => {
     const [text, setText] = useState('')
