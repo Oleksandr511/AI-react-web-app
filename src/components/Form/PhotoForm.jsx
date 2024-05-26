@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 
-const PhotoForm = () => {
+const PhotoForm = ({onFileSelected}) => {
 
     const [file, setFile] = useState()
 
     const handlePhoto = (e) => {
-        console.log(e?.target?.files);
-        setFile(URL.createObjectURL(e.target.files[0]));
+        console.log(e.target.files);
+        const  fileUrl = URL.createObjectURL(e.target.files[0]);
+        onFileSelected(fileUrl);
     }
     return (
         <div>
@@ -14,7 +15,7 @@ const PhotoForm = () => {
                 <label>Upload image</label>
                 <input accept="image/*" type="file" onChange={handlePhoto}/>
             
-            <img src={file}/>
+            {/* {file && <img src={file} alt="Preview"/>} */}
         </div>
     )
 }
