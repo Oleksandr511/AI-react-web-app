@@ -4,6 +4,7 @@ import useTelegram from '../../hooks/useTelegram';
 const Form = () => {
     const [text, setText] = useState('')
     const {user, tg} = useTelegram()
+    const [result, setResult] = useState('')
     const handleSubmit = (event) => {
         event.preventDefault()
         const data = {
@@ -11,7 +12,8 @@ const Form = () => {
             userId: tg.initDataUnsafe?.user?.id
         }
         tg.sendData(JSON.stringify(data))
-        console.log(JSON.stringify(data))
+        setResult(JSON.stringify(data))
+        //console.log(JSON.stringify(data))
     }
 
     return (
@@ -26,6 +28,7 @@ const Form = () => {
                 </label>
                 <input type='submit'/>
             </form>
+            <label>{result}</label>
         </div>
     )
 }
