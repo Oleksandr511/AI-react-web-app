@@ -8,9 +8,10 @@ const Form = () => {
         event.preventDefault()
         const data = {
             message: text,
-            userId: user.id
+            userId: tg.initDataUnsafe?.user?.id
         }
         tg.sendData(JSON.stringify(data))
+        console.log(JSON.stringify(data))
     }
 
     return (
