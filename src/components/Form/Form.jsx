@@ -1,10 +1,21 @@
 import React, { useState } from 'react'
+import useTelegram from './hooks/useTelegram';
 
 const Form = () => {
     const [text, setText] = useState('')
+    const {user, tg} = useTelegram()
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const data = {
+            message: text,
+            userId: user.id
+        }
+        tg.sendData(JSON.stringify(data))
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Enter text
                     <input
                         type='text'
@@ -12,6 +23,7 @@ const Form = () => {
                         onChange={(e => setText(e.target.value))}
                     />
                 </label>
+                <input type='submit'/>
             </form>
         </div>
     )
